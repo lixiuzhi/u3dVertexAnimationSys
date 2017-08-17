@@ -1,0 +1,241 @@
+fileFormatVersion: 2
+guid: 07ea6ec8e26f6454ba8281c48ece194b
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: b_b1
+    100002: b_b2
+    100004: b_b3
+    100006: b_b4
+    100008: b_b5
+    100010: b_b6
+    100012: b_b7
+    100014: b_head
+    100016: b_l_calf
+    100018: b_l_clavicle
+    100020: b_l_foot
+    100022: b_l_forearm
+    100024: b_l_hand
+    100026: b_l_thigh
+    100028: b_l_upperArm
+    100030: b_neck
+    100032: b_pelvis
+    100034: b_q1
+    100036: b_r_calf
+    100038: b_r_clavicle
+    100040: b_r_foot
+    100042: b_r_forearm
+    100044: b_r_hand
+    100046: b_r_thigh
+    100048: b_r_upperArm
+    100050: b_root
+    100052: b_spine
+    100054: b_spine1
+    100056: b_t1
+    100058: b_t2
+    100060: b_x1
+    100062: b_y1
+    100064: b_z1
+    100066: Object03
+    100068: Object10
+    100070: Object14
+    100072: //RootNode
+    400000: b_b1
+    400002: b_b2
+    400004: b_b3
+    400006: b_b4
+    400008: b_b5
+    400010: b_b6
+    400012: b_b7
+    400014: b_head
+    400016: b_l_calf
+    400018: b_l_clavicle
+    400020: b_l_foot
+    400022: b_l_forearm
+    400024: b_l_hand
+    400026: b_l_thigh
+    400028: b_l_upperArm
+    400030: b_neck
+    400032: b_pelvis
+    400034: b_q1
+    400036: b_r_calf
+    400038: b_r_clavicle
+    400040: b_r_foot
+    400042: b_r_forearm
+    400044: b_r_hand
+    400046: b_r_thigh
+    400048: b_r_upperArm
+    400050: b_root
+    400052: b_spine
+    400054: b_spine1
+    400056: b_t1
+    400058: b_t2
+    400060: b_x1
+    400062: b_y1
+    400064: b_z1
+    400066: Object03
+    400068: Object10
+    400070: Object14
+    400072: //RootNode
+    4300000: Object10
+    4300002: Object03
+    4300004: Object14
+    7400000: pixiu_special
+    9500000: //RootNode
+    13700000: Object03
+    13700002: Object10
+    13700004: Object14
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: pixiu_special
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 65
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: b_root
+        weight: 1
+      - path: b_root/b_pelvis
+        weight: 1
+      - path: b_root/b_pelvis/b_b1
+        weight: 1
+      - path: b_root/b_pelvis/b_b1/b_b2
+        weight: 1
+      - path: b_root/b_pelvis/b_b1/b_b2/b_b3
+        weight: 1
+      - path: b_root/b_pelvis/b_b1/b_b2/b_b3/b_b4
+        weight: 1
+      - path: b_root/b_pelvis/b_b1/b_b2/b_b3/b_b4/b_b5
+        weight: 1
+      - path: b_root/b_pelvis/b_b1/b_b2/b_b3/b_b4/b_b5/b_b6
+        weight: 1
+      - path: b_root/b_pelvis/b_b1/b_b2/b_b3/b_b4/b_b5/b_b6/b_b7
+        weight: 1
+      - path: b_root/b_pelvis/b_l_thigh
+        weight: 1
+      - path: b_root/b_pelvis/b_l_thigh/b_l_calf
+        weight: 1
+      - path: b_root/b_pelvis/b_l_thigh/b_l_calf/b_l_foot
+        weight: 1
+      - path: b_root/b_pelvis/b_r_thigh
+        weight: 1
+      - path: b_root/b_pelvis/b_r_thigh/b_r_calf
+        weight: 1
+      - path: b_root/b_pelvis/b_r_thigh/b_r_calf/b_r_foot
+        weight: 1
+      - path: b_root/b_pelvis/b_spine
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_l_clavicle
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_l_clavicle/b_l_upperArm
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_l_clavicle/b_l_upperArm/b_l_forearm
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_l_clavicle/b_l_upperArm/b_l_forearm/b_l_hand
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_neck
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_neck/b_head
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_neck/b_head/b_t1
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_neck/b_head/b_t1/b_t2
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_neck/b_head/b_y1
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_neck/b_head/b_z1
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_r_clavicle
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_r_clavicle/b_r_upperArm
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_r_clavicle/b_r_upperArm/b_r_forearm
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_r_clavicle/b_r_upperArm/b_r_forearm/b_r_hand
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_r_clavicle/b_r_upperArm/b_r_forearm/b_r_hand/b_q1
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_x1
+        weight: 1
+      - path: Object03
+        weight: 1
+      - path: Object10
+        weight: 1
+      - path: Object14
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

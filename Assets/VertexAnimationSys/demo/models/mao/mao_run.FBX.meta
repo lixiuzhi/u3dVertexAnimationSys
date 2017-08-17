@@ -1,0 +1,258 @@
+fileFormatVersion: 2
+guid: ed32619463b7b1b4381db3212ebefb03
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: b_head
+    100002: b_jaw
+    100004: b_l_calf
+    100006: b_l_clavicle
+    100008: b_l_ear
+    100010: b_l_eyelid
+    100012: b_l_finger0
+    100014: b_l_finger1
+    100016: b_l_foot
+    100018: b_l_forearm
+    100020: b_l_hand
+    100022: b_l_head
+    100024: b_l_head1
+    100026: b_l_head2
+    100028: b_l_thigh
+    100030: b_l_toe
+    100032: b_l_upperarm
+    100034: b_pelvis
+    100036: b_r_calf
+    100038: b_r_clavicle
+    100040: b_r_ear
+    100042: b_r_eyelid
+    100044: b_r_finger0
+    100046: b_r_finger1
+    100048: b_r_foot
+    100050: b_r_forearm
+    100052: b_r_hand
+    100054: b_r_head
+    100056: b_r_head1
+    100058: b_r_head2
+    100060: b_r_thigh
+    100062: b_r_toe
+    100064: b_r_upperarm
+    100066: b_root
+    100068: b_spine
+    100070: b_spine1
+    100072: b_tail
+    100074: //RootNode
+    100076: Object02
+    400000: b_head
+    400002: b_jaw
+    400004: b_l_calf
+    400006: b_l_clavicle
+    400008: b_l_ear
+    400010: b_l_eyelid
+    400012: b_l_finger0
+    400014: b_l_finger1
+    400016: b_l_foot
+    400018: b_l_forearm
+    400020: b_l_hand
+    400022: b_l_head
+    400024: b_l_head1
+    400026: b_l_head2
+    400028: b_l_thigh
+    400030: b_l_toe
+    400032: b_l_upperarm
+    400034: b_pelvis
+    400036: b_r_calf
+    400038: b_r_clavicle
+    400040: b_r_ear
+    400042: b_r_eyelid
+    400044: b_r_finger0
+    400046: b_r_finger1
+    400048: b_r_foot
+    400050: b_r_forearm
+    400052: b_r_hand
+    400054: b_r_head
+    400056: b_r_head1
+    400058: b_r_head2
+    400060: b_r_thigh
+    400062: b_r_toe
+    400064: b_r_upperarm
+    400066: b_root
+    400068: b_spine
+    400070: b_spine1
+    400072: b_tail
+    400074: //RootNode
+    400076: Object02
+    4300000: Object02
+    7400000: mao_run
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Object02
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: mao_run
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: b_root
+        weight: 1
+      - path: b_root/b_pelvis
+        weight: 1
+      - path: b_root/b_pelvis/b_l_thigh
+        weight: 1
+      - path: b_root/b_pelvis/b_l_thigh/b_l_calf
+        weight: 1
+      - path: b_root/b_pelvis/b_l_thigh/b_l_calf/b_l_foot
+        weight: 1
+      - path: b_root/b_pelvis/b_l_thigh/b_l_calf/b_l_foot/b_l_toe
+        weight: 1
+      - path: b_root/b_pelvis/b_r_thigh
+        weight: 1
+      - path: b_root/b_pelvis/b_r_thigh/b_r_calf
+        weight: 1
+      - path: b_root/b_pelvis/b_r_thigh/b_r_calf/b_r_foot
+        weight: 1
+      - path: b_root/b_pelvis/b_r_thigh/b_r_calf/b_r_foot/b_r_toe
+        weight: 1
+      - path: b_root/b_pelvis/b_spine
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head/b_jaw
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head/b_l_ear
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head/b_l_eyelid
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head/b_l_head
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head/b_l_head/b_l_head1
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head/b_l_head/b_l_head1/b_l_head2
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head/b_r_ear
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head/b_r_eyelid
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head/b_r_head
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head/b_r_head/b_r_head1
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_head/b_r_head/b_r_head1/b_r_head2
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_l_clavicle
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_l_clavicle/b_l_upperarm
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_l_clavicle/b_l_upperarm/b_l_forearm
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_l_clavicle/b_l_upperarm/b_l_forearm/b_l_hand
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_l_clavicle/b_l_upperarm/b_l_forearm/b_l_hand/b_l_finger0
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_l_clavicle/b_l_upperarm/b_l_forearm/b_l_hand/b_l_finger1
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_r_clavicle
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_r_clavicle/b_r_upperarm
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_r_clavicle/b_r_upperarm/b_r_forearm
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_r_clavicle/b_r_upperarm/b_r_forearm/b_r_hand
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_r_clavicle/b_r_upperarm/b_r_forearm/b_r_hand/b_r_finger0
+        weight: 1
+      - path: b_root/b_pelvis/b_spine/b_spine1/b_r_clavicle/b_r_upperarm/b_r_forearm/b_r_hand/b_r_finger1
+        weight: 1
+      - path: b_root/b_pelvis/b_tail
+        weight: 1
+      - path: Object02
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

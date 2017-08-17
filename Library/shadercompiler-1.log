@@ -1,0 +1,31 @@
+Base path: D:/Program Files/Unity3D4.6.3/Editor/Data
+Pipe name: \\.\pipe\UnityShaderCompiler-1-2896
+Cmd: getPlatforms
+Cmd: preprocess
+  insize=2196 outsize=508 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (18): unrecognized identifier 'blend'
+  api=4 type=0 insize=1990 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=2197 outsize=508 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (18): unrecognized identifier 'Blend'
+  api=4 type=0 insize=1991 outsize=0 kw= ok=0
+Cmd: preprocess
+  insize=2193 outsize=545 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1950 outsize=2558 kw= ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1950 outsize=713 kw= ok=1
+Cmd: preprocess
+  insize=2197 outsize=549 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1950 outsize=2558 kw= ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1950 outsize=713 kw= ok=1
+Cmd: preprocess
+  insize=2408 outsize=571 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=2138 outsize=3175 kw= ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=2138 outsize=713 kw= ok=1
