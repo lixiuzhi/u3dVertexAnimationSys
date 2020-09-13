@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/VertexAnimationSys/demo/test.unity
-  isLoaded: 1
-  isActive: 1

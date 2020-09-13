@@ -15,7 +15,7 @@ public class VertexAnimation : MonoBehaviour
 
     public MeshFilter meshFilter;
     public MeshRenderer meshRender;
-    public Material material;
+   // public Material material;
 
     public float speed = 1;
     //当前播放动作时间
@@ -28,16 +28,37 @@ public class VertexAnimation : MonoBehaviour
 
     public string defaultAnimName = "Gongji";
     public string animationResPrefix = "";
-    public List<string> animationNames = new List<string>();
 
+    
+    float _Frame2Time;
+
+    float _Frame3Time;
+    float _CurTime=0;
+    int _Frame2TimeShaderId;
+
+    int _Frame3TimeShaderId;
+    int _CurTimeShaderId;
+    MaterialPropertyBlock prop;
+
+public bool randStartPos = true;
+ 
     void Awake()
     {
+        prop = new MaterialPropertyBlock();
+
         meshFilter = gameObject.GetComponent<MeshFilter>();
         meshRender = gameObject.GetComponent<MeshRenderer>();
-        material = meshRender.material;
-        Play(defaultAnimName);
-    }
+        //material = meshRender.material;
+        Play(defaultAnimName); 
+        var shader = meshRender.sharedMaterial.shader;
+        _CurTimeShaderId = shader.GetPropertyNameId(shader.FindPropertyIndex("_CurTime"));
+        _Frame2TimeShaderId =  shader.GetPropertyNameId(shader.FindPropertyIndex("_Frame2Time"));
+        _Frame3TimeShaderId =  shader.GetPropertyNameId(shader.FindPropertyIndex("_Frame3Time"));
 
+        if(randStartPos){
+            currPlayPos = UnityEngine.Random.Range(0,0.6f);
+        }
+    }
     public void Play(string name)
     {
         string newResName = animationResPrefix + name;
@@ -126,14 +147,24 @@ public class VertexAnimation : MonoBehaviour
                 meshFilter.mesh = mesh;
             }
             Vector3 v3 = currClipInfo.everyClipFrameTimePoints[currClipOffsetIndex];
-            material.SetFloat("_Frame2Time", v3.x);
-            material.SetFloat("_Frame3Time", v3.y);
+            //material.SetFloat("_Frame2Time", v3.x);
+            //material.SetFloat("_Frame3Time", v3.y);
             //material.SetFloat("Frame4Time", v3.z);
+            _Frame2Time = v3.x;
+            _Frame3Time = v3.y;
         }
         //material.SetFloat("_CurTime", (currPlayPos - currClipBeginPos) / (nextClipPos - currClipBeginPos));
         //时间转换成当前片段的0-1内
-        material.SetFloat("_CurTime", (currPlayPos - currClipBeginPos) / (nextClipPos - currClipBeginPos));
+        //material.SetFloat("_CurTime", (currPlayPos - currClipBeginPos) / (nextClipPos - currClipBeginPos));
+        _CurTime = (currPlayPos - currClipBeginPos) / (nextClipPos - currClipBeginPos);
 
         currPlayPos += Time.deltaTime * speed;
+ 
+        //meshRender.GetPropertyBlock(prop);
+        prop.SetFloat(_CurTimeShaderId,_CurTime);
+        prop.SetFloat(_Frame2TimeShaderId,_Frame2Time);
+        prop.SetFloat(_Frame3TimeShaderId,_Frame3Time);
+        meshRender.SetPropertyBlock(prop);     
     }
+
 }
