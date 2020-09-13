@@ -9,13 +9,11 @@ using System.IO;
 public class VertexAnimation : MonoBehaviour
 {
 
-    string CurrAinResName = string.Empty;
-    // public Texture2D TextureMap;
+    string curAinResName = string.Empty; 
     public VertexAnimationResManager.VertexAnimationClipInfo currClipInfo = null;
 
     public MeshFilter meshFilter;
-    public MeshRenderer meshRender;
-   // public Material material;
+    public MeshRenderer meshRender; 
 
     public float speed = 1;
     //当前播放动作时间
@@ -40,7 +38,8 @@ public class VertexAnimation : MonoBehaviour
     int _CurTimeShaderId;
     MaterialPropertyBlock prop;
 
-public bool randStartPos = true;
+    //test
+    public bool randStartPos = true;
  
     void Awake()
     {
@@ -62,11 +61,11 @@ public bool randStartPos = true;
     public void Play(string name)
     {
         string newResName = animationResPrefix + name;
-        if (CurrAinResName == newResName)
+        if (curAinResName == newResName)
         {
             return;
         }
-        CurrAinResName = newResName;
+        curAinResName = newResName;
         currClipInfo = VertexAnimationResManager.Singleton.GetAnimationMeshInfo(newResName);
         if (currClipInfo == null)
             return;
@@ -140,27 +139,15 @@ public bool randStartPos = true;
         }
 
         if (isChangeMesh)
-        {
-            Mesh mesh = currClipInfo.clipMeshs[currClipOffsetIndex];
-            // if(meshFilter.mesh!=mesh)
-            {
-                meshFilter.mesh = mesh;
-            }
-            Vector3 v3 = currClipInfo.everyClipFrameTimePoints[currClipOffsetIndex];
-            //material.SetFloat("_Frame2Time", v3.x);
-            //material.SetFloat("_Frame3Time", v3.y);
-            //material.SetFloat("Frame4Time", v3.z);
+        { 
+            meshFilter.mesh = mesh; 
+            Vector3 v3 = currClipInfo.everyClipFrameTimePoints[currClipOffsetIndex]; 
             _Frame2Time = v3.x;
             _Frame3Time = v3.y;
-        }
-        //material.SetFloat("_CurTime", (currPlayPos - currClipBeginPos) / (nextClipPos - currClipBeginPos));
-        //时间转换成当前片段的0-1内
-        //material.SetFloat("_CurTime", (currPlayPos - currClipBeginPos) / (nextClipPos - currClipBeginPos));
+        } 
         _CurTime = (currPlayPos - currClipBeginPos) / (nextClipPos - currClipBeginPos);
 
-        currPlayPos += Time.deltaTime * speed;
- 
-        //meshRender.GetPropertyBlock(prop);
+        currPlayPos += Time.deltaTime * speed; 
         prop.SetFloat(_CurTimeShaderId,_CurTime);
         prop.SetFloat(_Frame2TimeShaderId,_Frame2Time);
         prop.SetFloat(_Frame3TimeShaderId,_Frame3Time);
