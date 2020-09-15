@@ -140,6 +140,7 @@ public class VertexAnimation : MonoBehaviour
 
         if (isChangeMesh)
         { 
+            Mesh mesh = currClipInfo.clipMeshs[currClipOffsetIndex];
             meshFilter.mesh = mesh; 
             Vector3 v3 = currClipInfo.everyClipFrameTimePoints[currClipOffsetIndex]; 
             _Frame2Time = v3.x;
