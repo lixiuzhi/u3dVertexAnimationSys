@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,39 +8,33 @@ using System.IO;
 
 public class VertexAnimation : MonoBehaviour
 {
+    public string animationResPrefix = "";
+    public TextAsset[] clipDatas;
 
-    string curAinResName = string.Empty; 
+    public string curAinResName = string.Empty;
     public VertexAnimationResManager.VertexAnimationClipInfo currClipInfo = null;
-
     public MeshFilter meshFilter;
-    public MeshRenderer meshRender; 
-
+    public MeshRenderer meshRender;
     public float speed = 1;
     //当前播放动作时间
-    public float currPlayPos = 0;
+    public float curPlayPos = 0;
     //当前片段开始时间
-    public float currClipBeginPos = 0;
+    public float curClipBeginPos = 0;
     //下一个片段开始时间
     public float nextClipPos = 0;
-    public int currClipOffsetIndex = 0;
-
-    public string defaultAnimName = "Gongji";
-    public string animationResPrefix = "";
-
-    
-    float _Frame2Time;
-
-    float _Frame3Time;
-    float _CurTime=0;
-    int _Frame2TimeShaderId;
-
-    int _Frame3TimeShaderId;
-    int _CurTimeShaderId;
+    public int curClipOffsetIndex = 0;
+    public string defaultAnimName = "idle";
+    float frame2Time;
+    float frame3Time;
+    float curTime = 0;
+    int frame2TimeShaderId;
+    int frame3TimeShaderId;
+    int curTimeShaderId;
     MaterialPropertyBlock prop;
-
     //test
-    public bool randStartPos = true;
- 
+    public bool randStartPos = false;
+    public bool loop = false;
+
     void Awake()
     {
         prop = new MaterialPropertyBlock();
@@ -48,33 +42,54 @@ public class VertexAnimation : MonoBehaviour
         meshFilter = gameObject.GetComponent<MeshFilter>();
         meshRender = gameObject.GetComponent<MeshRenderer>();
         //material = meshRender.material;
-        Play(defaultAnimName); 
         var shader = meshRender.sharedMaterial.shader;
-        _CurTimeShaderId = shader.GetPropertyNameId(shader.FindPropertyIndex("_CurTime"));
-        _Frame2TimeShaderId =  shader.GetPropertyNameId(shader.FindPropertyIndex("_Frame2Time"));
-        _Frame3TimeShaderId =  shader.GetPropertyNameId(shader.FindPropertyIndex("_Frame3Time"));
+        curTimeShaderId = shader.GetPropertyNameId(shader.FindPropertyIndex("_CurTime"));
+        frame2TimeShaderId = shader.GetPropertyNameId(shader.FindPropertyIndex("_Frame2Time"));
+        frame3TimeShaderId = shader.GetPropertyNameId(shader.FindPropertyIndex("_Frame3Time"));
 
-        if(randStartPos){
-            currPlayPos = UnityEngine.Random.Range(0,0.6f);
+        if (randStartPos)
+        {
+            curPlayPos = UnityEngine.Random.Range(0, 0.2f);
         }
+        Play(defaultAnimName, speed, loop);
     }
-    public void Play(string name)
+    public void Play(string name, float speed = 1, bool loop = true)
     {
+        if (clipDatas == null)
+            return;
+        this.speed = speed;
+        this.loop = loop;
         string newResName = animationResPrefix + name;
         if (curAinResName == newResName)
         {
             return;
         }
         curAinResName = newResName;
-        currClipInfo = VertexAnimationResManager.Singleton.GetAnimationMeshInfo(newResName);
+        currClipInfo = VertexAnimationResManager.Singleton.GetAnimationMeshInfo(newResName, null);
+        if (currClipInfo == null)
+        {
+            byte[] data = null;
+            foreach (var v in clipDatas)
+            {
+                if (v.name == curAinResName)
+                {
+                    data = v.bytes;
+                    break;
+                }
+            }
+            if (data == null)
+                return;
+            currClipInfo = VertexAnimationResManager.Singleton.GetAnimationMeshInfo(newResName, data);
+        }
+
         if (currClipInfo == null)
             return;
 
-        meshFilter.mesh = currClipInfo.clipMeshs[0]; 
-        currPlayPos = 0;
-        currClipBeginPos = 0;
+        meshFilter.mesh = currClipInfo.clipMeshs[0];
+        curPlayPos = 0;
+        curClipBeginPos = 0;
         nextClipPos = currClipInfo.clipLenghts[0];
-        currClipOffsetIndex = 0;
+        curClipOffsetIndex = 0;
     }
 
     public void SetSpeed(float speed)
@@ -88,31 +103,39 @@ public class VertexAnimation : MonoBehaviour
         if (currClipInfo == null || currClipInfo.clipLenghts.Count == 0)
             return;
         isChangeMesh = false;
-        if (currPlayPos >= currClipInfo.clipTotalTimeLen)
+        curPlayPos += Time.deltaTime * speed;
+        if (curPlayPos > currClipInfo.clipTotalTimeLen)
         {
-            currPlayPos = 0.001f * (((int)(currPlayPos * 1000)) % ((int)(1000 * currClipInfo.clipTotalTimeLen)));
-
-            float ft = currPlayPos;
-            for(int i=0;i< currClipInfo.clipLenghts.Count;i++)
+            if (loop)
             {
-                if(ft < currClipInfo.clipLenghts[i])
+                curPlayPos = 0.001f * (((int)(curPlayPos * 1000)) % ((int)(1000 * currClipInfo.clipTotalTimeLen)));
+                float ft = curPlayPos;
+                for (int i = 0; i < currClipInfo.clipLenghts.Count; i++)
                 {
-                    if (i > 0)
+                    if (ft < currClipInfo.clipLenghts[i])
                     {
-                        currClipBeginPos = nextClipPos; 
-                        nextClipPos += currClipInfo.clipLenghts[i];
+                        if (i > 0)
+                        {
+                            curClipBeginPos = nextClipPos;
+                            nextClipPos += currClipInfo.clipLenghts[i];
+                        }
+                        else
+                        {
+                            curClipBeginPos = 0;
+                            nextClipPos = currClipInfo.clipLenghts[i];
+                        }
+                        curClipOffsetIndex = i;
+                        break;
                     }
-                    else
-                    {
-                        currClipBeginPos = 0;
-                        nextClipPos = currClipInfo.clipLenghts[i];
-                    }
-                    currClipOffsetIndex = i;
-                    break;
+                    ft -= currClipInfo.clipLenghts[i];
                 }
-                ft -= currClipInfo.clipLenghts[i];
             }
-             
+            else
+            {
+                curPlayPos = currClipInfo.clipTotalTimeLen;
+                curClipBeginPos = nextClipPos = curPlayPos;
+            }
+
             if (currClipInfo.clipMeshs.Count > 1)
                 isChangeMesh = true;
         }
@@ -120,39 +143,38 @@ public class VertexAnimation : MonoBehaviour
         ///判断是否切换mesh
         if (currClipInfo.clipMeshs.Count > 1)
         {
-            if (currPlayPos > nextClipPos)
+            if (curPlayPos > nextClipPos)
             {
                 isChangeMesh = true;
-                currClipOffsetIndex++;
-                if (currClipOffsetIndex >= currClipInfo.clipLenghts.Count)
+                curClipOffsetIndex++;
+                if (curClipOffsetIndex >= currClipInfo.clipLenghts.Count)
                 {
-                    currClipOffsetIndex = 0;
-                    currClipBeginPos = 0;
+                    curClipOffsetIndex = 0;
+                    curClipBeginPos = 0;
                     nextClipPos = currClipInfo.clipLenghts[0];
                 }
                 else
                 {
-                    currClipBeginPos = nextClipPos;
-                    nextClipPos += currClipInfo.clipLenghts[currClipOffsetIndex];
+                    curClipBeginPos = nextClipPos;
+                    nextClipPos += currClipInfo.clipLenghts[curClipOffsetIndex];
                 }
             }
         }
 
         if (isChangeMesh)
-        { 
-            Mesh mesh = currClipInfo.clipMeshs[currClipOffsetIndex];
-            meshFilter.mesh = mesh; 
-            Vector3 v3 = currClipInfo.everyClipFrameTimePoints[currClipOffsetIndex]; 
-            _Frame2Time = v3.x;
-            _Frame3Time = v3.y;
-        } 
-        _CurTime = (currPlayPos - currClipBeginPos) / (nextClipPos - currClipBeginPos);
+        {
+            var mesh = currClipInfo.clipMeshs[curClipOffsetIndex];
+            meshFilter.mesh = mesh;
+            Vector3 v3 = currClipInfo.everyClipFrameTimePoints[curClipOffsetIndex];
+            frame2Time = v3.x;
+            frame3Time = v3.y;
+        }
+        curTime = (curPlayPos - curClipBeginPos) / (nextClipPos - curClipBeginPos);
 
-        currPlayPos += Time.deltaTime * speed; 
-        prop.SetFloat(_CurTimeShaderId,_CurTime);
-        prop.SetFloat(_Frame2TimeShaderId,_Frame2Time);
-        prop.SetFloat(_Frame3TimeShaderId,_Frame3Time);
-        meshRender.SetPropertyBlock(prop);     
+        prop.SetFloat(curTimeShaderId, curTime);
+        prop.SetFloat(frame2TimeShaderId, frame2Time);
+        prop.SetFloat(frame3TimeShaderId, frame3Time);
+        meshRender.SetPropertyBlock(prop);
     }
 
 }
