@@ -127,7 +127,7 @@ Shader "LXZ/VertexAnimationShadow" {
 		float4 fragShadow(v2f i) : COLOR
 		{
 			UNITY_SETUP_INSTANCE_ID(i); 
-			return float4(0,0,0,0.2);
+			return float4(0,0,0,0.45);
 		} 
 
 		ENDCG 
