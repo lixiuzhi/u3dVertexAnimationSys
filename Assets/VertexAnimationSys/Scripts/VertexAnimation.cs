@@ -65,22 +65,7 @@ public class VertexAnimation : MonoBehaviour
             return;
         }
         curAinResName = newResName;
-        currClipInfo = VertexAnimationResManager.Singleton.GetAnimationMeshInfo(newResName, null);
-        if (currClipInfo == null)
-        {
-            byte[] data = null;
-            foreach (var v in clipDatas)
-            {
-                if (v.name == curAinResName)
-                {
-                    data = v.bytes;
-                    break;
-                }
-            }
-            if (data == null)
-                return;
-            currClipInfo = VertexAnimationResManager.Singleton.GetAnimationMeshInfo(newResName, data);
-        }
+        currClipInfo = VertexAnimationResManager.Singleton.GetAnimationMeshInfo(newResName);
 
         if (currClipInfo == null)
             return;
@@ -169,7 +154,11 @@ public class VertexAnimation : MonoBehaviour
             frame2Time = v3.x;
             frame3Time = v3.y;
         }
-        curTime = (curPlayPos - curClipBeginPos) / (nextClipPos - curClipBeginPos);
+
+        if (nextClipPos - curClipBeginPos > 0)
+            curTime = (curPlayPos - curClipBeginPos) / (nextClipPos - curClipBeginPos);
+        else
+            curTime = 1;
 
         prop.SetFloat(curTimeShaderId, curTime);
         prop.SetFloat(frame2TimeShaderId, frame2Time);
