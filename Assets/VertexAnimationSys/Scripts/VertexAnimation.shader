@@ -64,28 +64,25 @@ Shader "LXZ/VertexAnimation" {
 			float a = ct - f2t;
 			float b = ct - f3t;
 			
-		   float3 vec; 
-		   
-		   float3 vertex3 = float3(v.vertex2.w,v.vertex3.xy);
-		   
-		 	if(a<0)
-			   vec = v.vertex.xyz + (v.vertex1 - v.vertex.xyz)* ct/f2t; //ת��0-1��ֵ
-		 	else if(a>=0 && b<0)
-			{ 
-			    vec = v.vertex1 + (v.vertex2.xyz - v.vertex1)* a/(f3t-f2t); //ת��0-1��ֵ
-			} 
-			else
-			   vec = v.vertex2.xyz + (vertex3 - v.vertex2.xyz)* b/(1-f3t); //ת��0-1��ֵ
+		float c = 1 - f3t;
+
+			float3 vec; 
 			
-			   
-	       result.pos = UnityObjectToClipPos(float4(vec,1)); 
-			//result.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex1.xyz,1)); 
-			//result.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex2.xyz,1)); 
-			// result.pos = mul(UNITY_MATRIX_MVP, float4(vertex3.xyz,1)); 
-			// result.pos = mul(UNITY_MATRIX_MVP, float4(vertex4.xyz,1)); 
-	        result.uv = v.texcoord; 
-	        
-	        return result;
+			float3 vertex3 = float3(v.vertex2.w,v.vertex3.xy);
+			
+			if(a<0)
+			vec = v.vertex.xyz + (v.vertex1 - v.vertex.xyz)* ct/f2t; 
+			else if(a>=0 && b<0)
+			vec = v.vertex1 + (v.vertex2.xyz - v.vertex1)* a/(f3t-f2t);
+			else if( c>0)
+			vec = v.vertex2.xyz + (vertex3 - v.vertex2.xyz)* b/(c);
+			else
+			vec = vertex3;  
+			
+			result.pos = UnityObjectToClipPos(float4(vec,1));  
+			result.uv = v.texcoord; 
+			
+			return result;
 	    }
 	    
 	    float4 frag(v2f i) : COLOR
