@@ -33,7 +33,7 @@ public class VertexAnimation : MonoBehaviour
     MaterialPropertyBlock prop;
     //test
     public bool randStartPos = false;
-    public bool loop = false;
+    public bool loop = true;
 
     void Awake()
     {
